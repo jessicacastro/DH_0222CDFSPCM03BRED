@@ -1,0 +1,4 @@
+node_modules
+yarn.lock
+pages
+**/css/trabalhe-conosco.css

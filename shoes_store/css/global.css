@@ -1,0 +1,30 @@
+:root {
+  --color-white: #FFFFFF;
+  --color-gray: #777777;
+  --color-pink: #C2185B;
+  --color-gray-57: #575757;
+  --color-gray-9b: #9B9B9B;
+  --color-gray-c4: #C4C4C4;
+
+}
+
+/**
+ * Global
+ */
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+ ul {
+   list-style: none;
+ }
+
+ .container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}

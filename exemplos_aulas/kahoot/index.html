@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style> 
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background: green;
+      height: 100vh;
+    }
+
+    .blue, .red {
+      width: 500px;
+      height: 500px;
+      padding: 16px;
+      border: 1px solid pink;
+      margin: 16px;
+      box-sizing: border-box;
+      color: white;
+    }
+
+    .blue {
+      background-color: blue;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .red {
+      background-color: red;
+    }
+  </style>
+
+  <div class="container">
+    <div class="blue">
+      <h3>Oi, eu sou o h3</h3>
+      <div>
+        ABC
+      </div>
+    </div>
+    <div class="red"></div>
+  </div>
+</body>
+</html>

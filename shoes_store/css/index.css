@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+@import url('./global.css');
+
+
+
+
+.banner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+main h1 {
+  text-align: center;
+  margin-bottom: 80px;
+  font-size: 60px;
+  font-weight: 800;
+  text-transform: lowercase;
+}
+
+section.images-row {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 200px;
+}
+
+section.images-row img:first-of-type {
+  margin-right: 55px;
+  align-self: center;
+}
+
+section.products {
+  padding: 60px 0;
+
+  background-color: var(--color-pink);
+  margin-bottom: 165px;
+}
+
+section.products h3 {
+  color: var(--color-white);
+  font-weight: 800;
+  font-size: 44px;
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+section.products .products-row {
+  display: flex;
+  justify-content: center;
+}
+
+.products-row article {
+  background-color: var(--color-white);
+}
+
+.products-row article:not(:first-of-type) {
+  margin-left: 20px;
+}
+
+.products-row article section {
+  padding: 10px 10px;
+}
+
+.products-row article section p {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.products-row article section span {
+  font-weight: 400;
+}
+
+section.photoshoot-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 200px;
+}
+
+.photoshoot-row .action-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.action-column h5 {
+  font-size: 39px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.action-column button {
+  max-width: 400px;
+  width: 100%;
+  height: 100px;
+  background-color: var(--color-pink);
+  color: var(--color-white);
+
+  font-weight: 600;
+  font-size: 39px;
+
+  border: 0;
+  cursor: pointer;
+
+  margin-bottom: 70px;
+  margin-top: 20px;
+}
+
+.action-column button:hover {
+  filter: grayscale(30%);
+  transition-duration: 500ms;
+}
+

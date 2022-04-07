@@ -1,0 +1,30 @@
+@import url('./global.css');
+
+footer {
+  width: 100%;
+  display: flex;
+  background-color: var(--color-pink);
+  padding: 19px 140px;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-white);
+}
+
+footer .about {
+  max-width: 255px;
+  width: 100%;
+}
+
+footer article h6 {
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: lowercase;
+}
+
+footer article ul li {
+  font-weight: 400;
+}
+
+footer article.institucional {
+  margin-top: 20px;
+}

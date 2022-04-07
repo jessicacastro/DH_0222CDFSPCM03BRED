@@ -1,0 +1,18 @@
+[
+  {
+      "codigo": 1,
+      "titulo": "Harry Potter e a Ordem da Fênix",
+      "duracao": 2,
+      "atores": ["Daniel Radcliffe", "Emma Watson", "Rupert Grint"],
+      "anoDeLancamento": 2007,
+      "emCartaz": false
+    },
+    {
+      "codigo": 2,
+      "titulo": "O Massacre da Serra Elétrica",
+      "duracao": 1.5,
+      "atores": ["Cassio", "Ygor Silva"],
+      "anoDeLancamento": 2022,
+      "emCartaz": true
+    }
+]
