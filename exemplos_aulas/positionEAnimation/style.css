@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.blue {
+  background: blue;
+  width: 250px;
+  position: relative;
+  top: 70px;
+  left: 70px;
+  padding: 50px 30px 30px;
+  color: white;
+}
+
+.red {
+  background: red;
+  position: absolute;
+  top: -50px;
+  left: 80px;
+  border-radius: 50%;
+  height: 100px;
+
+}
+
+.green {
+  background: green;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  transition: all 0.5s
+}
+
+.green:hover {
+  background: greenyellow;
+  height: 150px;
+  transition: all 0.5s;
+  z-index: 7;
+}
+
+input {
+  width: 200px;
+  transition: width 0.5s;
+}
+
+input:focus {
+  width: 400px;
+  transition: width 0.5s;
+}
+
+button {
+  width: 100px;
+  height: 60px;
+  background: green;
+  color: white;
+  border: 0;
+  transition: all 0.5s;
+}
+
+button:hover {
+  background: purple;
+  width: 60px;
+  height: 60px;
+  border: 0;
+  border-radius: 50%;
+  transition: all 0.5s;
+}
+
+
+main {
+  height: 100vh;
+  width: 100%;
+}
+
+main div {
+  width: 100px;
+}
+
+.pink {
+  background-color: pink;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 100px;
+  z-index: 4;
+}
+
+.purple {
+  background-color: purple;
+  width: 100px;
+  height: 100px;
+  z-index: 3;
+  position: relative;
+  animation: quicar 1.5s 3;
+}
+
+.ball {
+  background-color: orangered;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-left: 50px;
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+/** Animação **/
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
