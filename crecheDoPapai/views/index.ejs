@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= titulo %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= titulo %></h1>
+    <p>Bem vindo a <%= titulo %></p>
+    <% if(nomeDoFilho) { %>
+      <p>
+        Querido <%= usuario %>, seu filho 
+        <%= nomeDoFilho %> de <%=idadeDoFilho %> anos, está bem!
+      </p>
+    <% } else { %>
+      <p>Querido <%= usuario %>, seu filho(a) está bem!</p>
+    <% } %>
+  </body>
+</html>
