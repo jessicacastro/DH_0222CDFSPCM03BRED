@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include('partials/head', {title: 'Criar'}) %>
+<body>
+	<div>
+		<h2>Formulário de criação de produtos</h2>
+
+		<form action="/products" method="POST">
+			<div>
+				<label for="name">Nome do produto:</label>
+				<input type="text" id="name" name="name">
+			</div>
+
+			<div>
+				<label for="price">Preço do produto:</label>
+				<input type="number" id="price" name="price">
+			</div>
+
+			<div>
+				<label for="discount">Desconto:</label>
+				<input type="number" id="discount" name="discount">
+			</div>
+
+			<div>
+				<label for="category">Categoria:</label>
+				<select name="category" id="category">
+					<option value="">Escolher</option>
+					<option value="in-sale">Em oferta</option>
+					<option value="visited">Últimos adicionados</option>
+				</select>
+			</div>
+
+			<div>
+				<label for="description">Descrição:</label>
+				<textarea name="description" id="description"></textarea>
+			</div>
+
+			<button type="submit">Salvar produto</button>
+		</form>
+	</div>
+</body>	
+</html>
