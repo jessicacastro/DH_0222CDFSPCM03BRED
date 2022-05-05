@@ -3,9 +3,9 @@
 <%- include('partials/head', {title: 'Editar'}) %>
 <body>
 	<div>
-		<h2>Você está editando: NOME DO PRODUTO</h2>
+		<h2>Você está editando: <%= productToEdit.name %></h2>
 
-		<form action="/products/edit/ID_PRODUTO" method="POST">
+		<form action="/products/edit/<%= productToEdit.id %>?_method=PUT" method="POST">
 			<div>
 				<label for="name">Nome do produto:</label>
 				<input type="text" id="name" name="name" required>
@@ -32,7 +32,7 @@
 
 			<div>
 				<label for="description">Descrição:</label>
-				<textarea name="description" id="description">DESCRIÇÃO DO PRODUTO</textarea>
+				<textarea name="description" id="description"><%= productToEdit.description %></textarea>
 			</div>
 
 			<button type="submit">Salvar produto</button>
