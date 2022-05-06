@@ -10,7 +10,7 @@ router.get('/edit/:id', ProductsController.edit)
 router.put('/edit/:id', ProductsController.update)
 
 // FAZER
-// router.get('/create', ProductController.create)
-// router.post('/', ProductController.save)
+router.get('/create', ProductsController.create)
+router.post('/', ProductsController.save)
 
 module.exports = router
