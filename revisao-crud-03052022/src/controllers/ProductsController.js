@@ -75,11 +75,29 @@ const ProductsController = {
   },
 
   create: (req, res) => {
-		// FAZER
+		res.render('product-create-form')
 	},
 
   save: (req, res) => {
-    // FAZER
+    const { name, price, discount, category, description } = req.body
+    const newId = products.length + 1
+
+    const newProduct = {
+      id: newId,
+      name,
+      description,
+      price,
+      discount,
+      image: 'default-image.png',
+      category
+    }    
+
+    products.push(newProduct)
+
+    const productsJSON = JSON.stringify(products, null, ' ')
+    
+    fs.writeFileSync(pathProductsJSON, productsJSON)
+    res.redirect('/products')
 	},
 }
 
