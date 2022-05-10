@@ -5,7 +5,7 @@
 	<div>
 		<h2>Formulário de criação de produtos</h2>
 
-		<form action="/products" method="POST">
+		<form action="/products" method="POST" enctype="multipart/form-data">
 			<div>
 				<label for="name">Nome do produto:</label>
 				<input type="text" id="name" name="name">
@@ -33,6 +33,11 @@
 			<div>
 				<label for="description">Descrição:</label>
 				<textarea name="description" id="description"></textarea>
+			</div>
+
+			<div>
+				<label for="image">Imagem do produto:</label>
+				<input type="file" name="image" id="image" />
 			</div>
 
 			<button type="submit">Salvar produto</button>
