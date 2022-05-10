@@ -5,6 +5,7 @@ const formatPrice = require('../utils/formatPrice')
 
 const products = getInfoDatabase('products')
 const pathProductsJSON = path.join(__dirname, '..', 'database', 'products.json')
+const SIZE_IMAGE_LIMIT_IN_BYTE = 200000
 
 const ProductsController = {
   index: (req, res) => {
@@ -82,13 +83,29 @@ const ProductsController = {
     const { name, price, discount, category, description } = req.body
     const newId = products.length + 1
 
+    if(!req.file) {
+      return res.send('Você não selecionou a imagem do produto')
+    }
+
+    const { filename, size } = req.file
+
+    if(size > SIZE_IMAGE_LIMIT_IN_BYTE) {
+      return res.send('Tamanho de imagem não permitido')
+    }
+
+    const extensionFile = filename.split('.')[1].toLowerCase()
+
+    if(extensionFile !== 'jpg' && extensionFile !== 'png') {
+      return res.send('A extensão do arquivo não é permitido')
+    }
+
     const newProduct = {
       id: newId,
       name,
       description,
       price,
       discount,
-      image: 'default-image.png',
+      image: filename,
       category
     }    
 
@@ -102,3 +119,5 @@ const ProductsController = {
 }
 
 module.exports = ProductsController
+
+
