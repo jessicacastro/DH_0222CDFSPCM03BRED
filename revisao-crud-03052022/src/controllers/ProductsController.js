@@ -51,6 +51,18 @@ const ProductsController = {
     const { name, description, price, discount, category } = req.body
     const productToEdit = products.find(product => product.id === Number(id))
 
+    const { filename, size } = req.file
+
+    if(size > SIZE_IMAGE_LIMIT_IN_BYTE) {
+      return res.send('Tamanho de imagem não permitido')
+    }
+
+    const extensionFile = filename.split('.')[1].toLowerCase()  // filename = nomeDaimagem.JPG ['nomeDaImagem', 'jpg']
+
+    if(extensionFile !== 'jpg' && extensionFile !== 'png') {
+      return res.send('A extensão do arquivo não é permitido')
+    }
+
     const productEdited = {
       id: productToEdit.id,
       name: name,
@@ -58,7 +70,7 @@ const ProductsController = {
       price: price,
       discount: discount,
       category: category,
-      image: productToEdit.image
+      image: filename || productToEdit.image
     }
 
     const newProducts = products.map((product) => {

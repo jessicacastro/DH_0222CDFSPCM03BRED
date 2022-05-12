@@ -8,7 +8,7 @@ router.get('/', ProductsController.index)
 router.get('/detail/:id', ProductsController.details)
 router.delete('/delete/:id', ProductsController.delete)
 router.get('/edit/:id', ProductsController.edit)
-router.put('/edit/:id', ProductsController.update)
+router.put('/edit/:id', multerConfig.single('image'), ProductsController.update)
 router.get('/create', ProductsController.create)
 router.post('/', multerConfig.single('image'), ProductsController.save)
 
