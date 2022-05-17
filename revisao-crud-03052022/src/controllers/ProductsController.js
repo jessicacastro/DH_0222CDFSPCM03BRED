@@ -1,66 +1,74 @@
-const fs = require('fs')
-const path = require('path')
-const getInfoDatabase = require('../utils/getInfoDatabase')
-const formatPrice = require('../utils/formatPrice')
+const fs = require("fs");
+const path = require("path");
+const getInfoDatabase = require("../utils/getInfoDatabase");
+const { validationResult } = require("express-validator");
+const formatPrice = require("../utils/formatPrice");
 
-const products = getInfoDatabase('products')
-const pathProductsJSON = path.join(__dirname, '..', 'database', 'products.json')
-const SIZE_IMAGE_LIMIT_IN_BYTE = 200000
+const products = getInfoDatabase("products");
+const pathProductsJSON = path.join(
+  __dirname,
+  "..",
+  "database",
+  "products.json"
+);
+const SIZE_IMAGE_LIMIT_IN_BYTE = 200000;
 
 const ProductsController = {
   index: (req, res) => {
-    res.render('products', {
+    res.render("products", {
       products,
-      formatPrice
-    })
+      formatPrice,
+    });
   },
 
   details: (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
     const productFound = products.find((product) => {
-      return product.id === Number(id)
-    })
+      return product.id === Number(id);
+    });
 
-    res.render('detail', {
+    res.render("detail", {
       productFound,
-      formatPrice
-    })
+      formatPrice,
+    });
   },
 
   delete: (req, res) => {
-    const { id } = req.params
-    
-    const productsFiltered = products.filter(product => product.id !== Number(id))
-    const productsFilteredJSON = JSON.stringify(productsFiltered, null, ' ')
+    const { id } = req.params;
 
-    fs.writeFileSync(pathProductsJSON, productsFilteredJSON)
+    const productsFiltered = products.filter(
+      (product) => product.id !== Number(id)
+    );
+    const productsFilteredJSON = JSON.stringify(productsFiltered, null, " ");
 
-    res.redirect('/products')
+    fs.writeFileSync(pathProductsJSON, productsFilteredJSON);
+
+    res.redirect("/products");
   },
 
   edit: (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
 
-    const productToEdit = products.find(product => product.id === Number(id))
+    const productToEdit = products.find((product) => product.id === Number(id));
 
-    res.render('product-edit-form', { productToEdit })
+    res.render("product-edit-form", { productToEdit });
   },
 
   update: (req, res) => {
-    const { id } = req.params
-    const { name, description, price, discount, category } = req.body
-    const productToEdit = products.find(product => product.id === Number(id))
+    const { id } = req.params;
+    const { name, description, price, discount, category } = req.body;
+    const productToEdit = products.find((product) => product.id === Number(id));
 
-    const { filename, size } = req.file
+    const { filename, size } = req.file;
 
-    if(size > SIZE_IMAGE_LIMIT_IN_BYTE) {
-      return res.send('Tamanho de imagem não permitido')
+    if (size > SIZE_IMAGE_LIMIT_IN_BYTE) {
+      return res.send("Tamanho de imagem não permitido");
     }
 
-    const extensionFile = filename.split('.')[1].toLowerCase()  // filename = nomeDaimagem.JPG ['nomeDaImagem', 'jpg']
+    const extensionFile = filename.split(".")[1].toLowerCase(); // filename = nomeDaimagem.JPG ['nomeDaImagem', 'jpg']
 
-    if(extensionFile !== 'jpg' && extensionFile !== 'png') {
-      return res.send('A extensão do arquivo não é permitido')
+    if (extensionFile !== "jpg" && extensionFile !== "png") {
+      return res.send("A extensão do arquivo não é permitido");
     }
 
     const productEdited = {
@@ -70,45 +78,52 @@ const ProductsController = {
       price: price,
       discount: discount,
       category: category,
-      image: filename || productToEdit.image
-    }
+      image: filename || productToEdit.image,
+    };
 
     const newProducts = products.map((product) => {
-      if(product.id === productEdited.id) {
-        return { ...productEdited }
-      } 
+      if (product.id === productEdited.id) {
+        return { ...productEdited };
+      }
 
-      return product
-    })
+      return product;
+    });
 
-    const productsFilteredJSON = JSON.stringify(newProducts, null, ' ')
+    const productsFilteredJSON = JSON.stringify(newProducts, null, " ");
 
-    fs.writeFileSync(pathProductsJSON, productsFilteredJSON)
-    res.redirect('/products')
+    fs.writeFileSync(pathProductsJSON, productsFilteredJSON);
+    res.redirect("/products");
   },
 
   create: (req, res) => {
-		res.render('product-create-form')
-	},
+    res.render("product-create-form");
+  },
 
   save: (req, res) => {
-    const { name, price, discount, category, description } = req.body
-    const newId = products.length + 1
+    const { name, price, discount, category, description } = req.body;
+    const newId = products.length + 1;
+    const errors = validationResult(req);
 
-    if(!req.file) {
-      return res.send('Você não selecionou a imagem do produto')
+    if (!errors.isEmpty()) {
+      return res.render("product-create-form", {
+        errors: errors.mapped(),
+      });
     }
 
-    const { filename, size } = req.file
-
-    if(size > SIZE_IMAGE_LIMIT_IN_BYTE) {
-      return res.send('Tamanho de imagem não permitido')
+    if (!req.file) {
+      return res.send("Você não selecionou a imagem do produto");
     }
 
-    const extensionFile = filename.split('.')[1].toLowerCase()
+    const { filename, size } = req.file;
 
-    if(extensionFile !== 'jpg' && extensionFile !== 'png') {
-      return res.send('A extensão do arquivo não é permitido')
+    if (size > SIZE_IMAGE_LIMIT_IN_BYTE) {
+      return res.send("Tamanho de imagem não permitido");
+    }
+
+    const extensionFile = filename.split(".")[1].toLowerCase();
+
+    if (extensionFile !== "jpg" && extensionFile !== "png") {
+      return res.send("A extensão do arquivo não é permitido");
     }
 
     const newProduct = {
@@ -118,18 +133,16 @@ const ProductsController = {
       price,
       discount,
       image: filename,
-      category
-    }    
+      category,
+    };
 
-    products.push(newProduct)
+    products.push(newProduct);
 
-    const productsJSON = JSON.stringify(products, null, ' ')
-    
-    fs.writeFileSync(pathProductsJSON, productsJSON)
-    res.redirect('/products')
-	},
-}
+    const productsJSON = JSON.stringify(products, null, " ");
 
-module.exports = ProductsController
+    fs.writeFileSync(pathProductsJSON, productsJSON);
+    res.redirect("/products");
+  },
+};
 
-
+module.exports = ProductsController;
