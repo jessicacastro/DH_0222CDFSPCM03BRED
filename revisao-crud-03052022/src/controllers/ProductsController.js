@@ -15,9 +15,12 @@ const SIZE_IMAGE_LIMIT_IN_BYTE = 200000;
 
 const ProductsController = {
   index: (req, res) => {
+    const userSession = req.user
+
     res.render("products", {
       products,
       formatPrice,
+      userSession
     });
   },
 
@@ -103,6 +106,8 @@ const ProductsController = {
     const { name, price, discount, category, description } = req.body;
     const newId = products.length + 1;
     const errors = validationResult(req);
+
+    console.log(req.body)
 
     if (!errors.isEmpty()) {
       return res.render("product-create-form", {

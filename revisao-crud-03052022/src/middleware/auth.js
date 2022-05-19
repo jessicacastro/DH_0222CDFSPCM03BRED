@@ -1,17 +1,11 @@
-const getInfoDatabase = require("../utils/getInfoDatabase");
-
 function auth(req, res, next) {
-  const users = getInfoDatabase("users");
-  const { email, password } = req.body;
+  const userIslogged = Boolean(req.session.user) || Boolean(req.user)
 
-  const userExists = users.find((user) => {
-    return user.email === email && user.password === password;
-  });
+  if(userIslogged) {
+    return next();
+  }
 
-  if (!userExists) return res.redirect("/");
-
-  res.redirect("products");
-  next();
+  return res.send('Você não está logado no sistema')
 }
 
 module.exports = auth;

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('partials/head', {title: 'Criar usuário'}) %>
+  <body>
+    <div>
+      <h2>Formulário de criação de usuários</h2>
+
+      <form action="/user" method="POST">
+        <div>
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" />
+        </div>
+
+        <div>
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" />
+        </div>
+
+        <div>
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" />
+        </div>
+
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </body>
+</html>
