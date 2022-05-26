@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const getInfoDatabase = require("../utils/getInfoDatabase");
-const { validationResult } = require("express-validator");
 const formatPrice = require("../utils/formatPrice");
+const createProductSchema = require('../schemas/createProductSchema')
 
 const products = getInfoDatabase("products");
 const pathProductsJSON = path.join(
@@ -105,14 +105,13 @@ const ProductsController = {
   save: (req, res) => {
     const { name, price, discount, category, description } = req.body;
     const newId = products.length + 1;
-    const errors = validationResult(req);
 
-    console.log(req.body)
+    const { error } = createProductSchema.validate(req.body, { abortEarly: false })
 
-    if (!errors.isEmpty()) {
-      return res.render("product-create-form", {
-        errors: errors.mapped(),
-      });
+    if(error) {
+      return res.render('product-create-form', {
+        errors: error.details
+      })
     }
 
     if (!req.file) {

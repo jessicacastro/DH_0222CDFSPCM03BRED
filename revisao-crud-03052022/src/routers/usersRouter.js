@@ -3,7 +3,7 @@ const UsersController = require('../controllers/UsersController')
 
 const router = express.Router();
 
-router.get('/', UsersController.showCreateUserPage)
+router.get('/', UsersController.showLoginPage)
 router.post('/', UsersController.login)
 
 module.exports = router
