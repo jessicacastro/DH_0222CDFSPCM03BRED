@@ -45,9 +45,9 @@
 
       <% if(typeof errors !== 'undefined') { %>
       <ul>
-        <% for(let error in errors) { %>
-        <li><%= errors[error].msg %></li>
-        <% } %>
+        <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+        <% }) %>
       </ul>
       <% } %>
     </div>

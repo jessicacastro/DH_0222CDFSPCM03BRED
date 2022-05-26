@@ -3,7 +3,7 @@ const getInfoDatabase = require('../utils/getInfoDatabase')
 const users = getInfoDatabase("users");
 
 const UsersController = {
-  showCreateUserPage: (req, res) => {
+  showLoginPage: (req, res) => {
     res.render('login')
   },
 
