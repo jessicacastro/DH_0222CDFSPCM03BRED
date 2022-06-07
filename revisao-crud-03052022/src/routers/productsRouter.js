@@ -1,23 +1,24 @@
-const express = require("express");
+const express = require('express')
 const ProductsController = require("../controllers/ProductsController");
 const multerConfig = require("../utils/multerConfig");
-const createProductValidator = require("../validators/createProductValidator");
+const auth = require('../middleware/auth')
 
 const router = express.Router();
 
-router.get("/", ProductsController.index);
-router.get("/detail/:id", ProductsController.details);
-router.delete("/delete/:id", ProductsController.delete);
-router.get("/edit/:id", ProductsController.edit);
+router.get("/", auth, ProductsController.index);
+router.get("/detail/:id", auth, ProductsController.details);
+router.delete("/delete/:id", auth, ProductsController.delete);
+router.get("/edit/:id", auth, ProductsController.edit);
 router.put(
   "/edit/:id",
+  auth,
   multerConfig.single("image"),
   ProductsController.update
 );
-router.get("/create", ProductsController.create);
+router.get("/create", auth, ProductsController.create);
 router.post(
   "/",
-  createProductValidator,
+  auth,
   multerConfig.single("image"),
   ProductsController.save
 );

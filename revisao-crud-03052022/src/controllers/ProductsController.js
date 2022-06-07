@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const getInfoDatabase = require("../utils/getInfoDatabase");
-const { validationResult } = require("express-validator");
 const formatPrice = require("../utils/formatPrice");
+const createProductSchema = require('../schemas/createProductSchema')
 
 const products = getInfoDatabase("products");
 const pathProductsJSON = path.join(
@@ -15,9 +15,12 @@ const SIZE_IMAGE_LIMIT_IN_BYTE = 200000;
 
 const ProductsController = {
   index: (req, res) => {
+    const userSession = req.user
+
     res.render("products", {
       products,
       formatPrice,
+      userSession
     });
   },
 
@@ -102,12 +105,13 @@ const ProductsController = {
   save: (req, res) => {
     const { name, price, discount, category, description } = req.body;
     const newId = products.length + 1;
-    const errors = validationResult(req);
 
-    if (!errors.isEmpty()) {
-      return res.render("product-create-form", {
-        errors: errors.mapped(),
-      });
+    const { error } = createProductSchema.validate(req.body, { abortEarly: false })
+
+    if(error) {
+      return res.render('product-create-form', {
+        errors: error.details
+      })
     }
 
     if (!req.file) {
