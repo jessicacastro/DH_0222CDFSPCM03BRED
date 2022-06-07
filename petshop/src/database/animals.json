@@ -1,0 +1,38 @@
+[
+  {
+   "id": 1,
+   "name": "Marquinhos",
+   "type": "dog",
+   "breed": "SRD"
+  },
+  {
+    "id": 2,
+    "name": "Koda",
+    "type": "cat",
+    "breed": "SRD Caramelo"
+   },
+   {
+    "id": 3,
+    "name": "Ralph",
+    "type": "dog",
+    "breed": "Rottweiler"
+   },
+   {
+    "id": 4,
+    "name": "Neve",
+    "type": "cat",
+    "breed": "SRD"
+   },
+   {
+    "id": 5,
+    "name": "Titan",
+    "type": "dog",
+    "breed": "Rottweiler"
+   },
+   {
+    "id": 6,
+    "name": "Sirius",
+    "type": "cat",
+    "breed": "Norueguês da Floresta"
+   }
+ ]

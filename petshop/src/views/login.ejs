@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head', { page: 'login', pageName: 'Login' }) %>
+  <body>
+    <main>
+      <form action="/login" method="POST">
+        <img src="/images/dog.png" alt="Logo">
+
+        <label for="username">Username</label>
+        <input placeholder="Insert your username here" type="text" name="username" id="username" />
+        <label for="password">Password</label>
+        <input placeholder="Insert your password here" type="password" name="password" id="password" />
+
+        <div class="form-group">
+          <input type="checkbox" name="remember" id="remember"> Remember me
+        </div>
+
+        <% if(error) { %>
+          <div class="error">
+            <p><%= error %></p>
+          </div>
+        <% } %>
+        <button type="submit">Logar</button>
+        <div class="line-or">
+          <hr><p>ou</p><hr>
+        </div>
+        <p><a href="/register">Cadastre-se aqui</a></p>
+      </form>
+    </main>
+  </body>
+</html>

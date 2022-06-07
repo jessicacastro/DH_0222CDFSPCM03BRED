@@ -1,0 +1,36 @@
+header {
+  width: 100%;
+  /* background: linear-gradient(180deg, #58EBB6 -40%, #116CF4 164.6%); */
+  background: #3F3D56;
+  padding: 30px 50px 0 50px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  max-width: 50px;
+  height: 50px;
+  width: 100%;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  font-weight: 300;
+}
+
+header nav ul li {
+  margin-left: 15px;
+}
+
+header nav ul li a {
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+}

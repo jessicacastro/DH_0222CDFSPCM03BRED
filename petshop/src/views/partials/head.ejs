@@ -1,0 +1,14 @@
+<head>
+  <title>
+    <% if(!pageName) { %>
+      Rescue Animals
+    <% } else { %>
+      Rescue Animals - <%= pageName %>
+    <% } %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/pages.css" />
+  <link rel="stylesheet" href="/stylesheets/header.css" />
+  <link rel="stylesheet" href="/stylesheets/<%= page %>.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>

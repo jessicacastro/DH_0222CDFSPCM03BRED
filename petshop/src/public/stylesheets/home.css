@@ -1,0 +1,57 @@
+body {
+  background: #3F3D56;
+  color: #FFF;
+}
+
+
+main {
+  margin-top: 40px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 0;
+  font-family: 'Roboto', sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+h1 u {
+  font-weight: 700;
+  color: #116CF4;;
+}
+
+section {
+  display: flex;
+}
+
+section article {
+  width: 50%;
+  /* border-right: 1px solid #E0E0E0; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section article h1 {
+  align-self: flex-start;
+}
+
+section article img {
+  width: 100%;
+  max-width: 450px;
+}
+
+section article.we-are {
+  font-weight: 300;
+}
+
+section.where-find-us {
+  margin-top: 60px;
+}
