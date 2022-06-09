@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Filme</title>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
+      </figure>
+    <h1 class="titulo">Adicionar Filme</h1>
+    <br>
+    <section class="formulario">
+        <form action="/movies/create" method="POST">
+            <label for="title">Title </label>
+            <p><input type="text" name="title" id="" required></p>
+
+            <label for="rating">Rating </label>
+            <p><input type="number" name="rating" id="" required> </p>
+
+            <label for="awards">Awards </label>
+            <p><input type="number" name="awards" id="" required></p>
+
+            <label for="release_date">Release date </label>
+            <p><input type="date" name="release_date" id="" required></p>
+
+            <label for="length">Length </label>
+            <p><input type="number" name="length" id="" required></p>
+
+            <br>
+            <p> <button class="botaoAdicionar" type="submit">Adicionar</button>
+            
+            <a  class="botaoVoltar" href="/movies">Lista de Filmes</a></p>
+        </form>
+    </section>
+    
+</body>
+
+</html>

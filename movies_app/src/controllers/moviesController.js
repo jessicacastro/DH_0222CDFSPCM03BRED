@@ -28,18 +28,84 @@ const moviesController = {
   recommended: (req, res) => {
     const configFindAll = {
       where: {
-        rating: {[database.Sequelize.Op.gte]: 8},
-        title: {[database.Sequelize.Op.like]: '%La%'}
+        rating: { [database.Sequelize.Op.gte]: 8 },
+        title: { [database.Sequelize.Op.like]: '%La%' }
       },
-      order:[
+      order: [
         ['rating', 'DESC']
       ],
       offset: 2
     }
-    
+
     database.Movies.findAll(configFindAll).then(movies => {
       res.render('recommendedMovies', { movies })
     })
+  },
+  withGenre: (req, res) => {
+    const configureFindAll = {
+      include: [{
+        model: database.Genres,
+        as: 'genres',
+        attributes: ['name'],
+        where: {
+          name: 'Drama'
+        }
+      }],
+      order: [
+        ['release_date', 'DESC']
+      ]
+    }
+
+    database.Movies.findAll(configureFindAll).then(movies => {
+      // console.log(movies)
+      res.render('login', { movies })
+    })
+  },
+  add: (req, res) => {
+    res.render('moviesAdd')
+  },
+  create: (req, res) => {
+    const { title, rating, awards, release_date, length } = req.body;
+
+    database.Movies.create({
+      title,
+      rating,
+      awards,
+      release_date,
+      length
+    })
+      .then(() => {
+        return res.redirect('/movies')
+      })
+      .catch(error => res.send(error))
+  },
+  edit: (req, res) => {
+    const movieId = req.params.id;
+
+    database.Movies.findByPk(movieId)
+      .then(movie => {
+        res.render('moviesEdit', { movie })
+      })
+      .catch(error => res.send(error))
+  },
+  update: (req, res) => {
+    const movieId = req.params.id;
+    const { title, rating, awards, release_date, length } = req.body
+
+    database.Movies.update({
+      title,
+      rating,
+      awards,
+      release_date,
+      length
+    }, {
+      where: { id: movieId }
+    })
+      .then(() => {
+        return res.redirect('/movies')
+      })
+      .catch(error => res.send(error))
+
   }
 }
 

@@ -1,5 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
   const alias = 'Movies';
+
   const columns = {
     id: {
       type: dataTypes.INTEGER,
@@ -25,14 +26,23 @@ module.exports = (sequelize, dataTypes) => {
     release_date: {
       type: dataTypes.DATE,
       allowNull: false,
+    },
+    genre_id: {
+      type: dataTypes.INTEGER,
+      allowNull: true
     }
   }
+
   const config = {
     tableName: 'movies',
     timestamps: false
   }
 
   const Movie = sequelize.define(alias, columns, config);
+
+  Movie.associate = (models) => {
+    Movie.belongsTo(models.Genres, { foreignKey: 'genre_id', as: 'genres' });
+  }
 
   return Movie
 }

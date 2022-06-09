@@ -13,6 +13,9 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 
+/** Usamos essa configuração para que as informações do formulário cheguem até o req.body */
+app.use(express.urlencoded({ extended: false }));
+
 app.use('/', indexRouter);
 app.use(moviesRoutes);
 app.use(genresRoutes);
