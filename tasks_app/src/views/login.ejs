@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('./partials/head', { pageName: 'Login' }) %>
+<body>
+  <main>
+    <section class="image-section">
+      <img src="/images/tasks_completed.svg" alt="Tasks completed">
+    </section>
+    <section class="form-section">
+      <form action="/login" method="POST">
+        <h3>Faça seu login!</h3>
+        <input type="email" name="email" id="email" placeholder="Insira seu email">
+        <input type="password" name="password" id="password" placeholder="Insira sua senha">
+        <input type="submit" value="Entrar">
+  
+        <a href="/">Novo por aqui? Cadastre-se!</a>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
