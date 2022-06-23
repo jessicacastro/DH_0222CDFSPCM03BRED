@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const router = require('./src/routes')
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.static(path.resolve(__dirname, './src', './public')));
 
 /** Usamos essa configuração para que as informações do formulário cheguem até o req.body */
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(router);
 

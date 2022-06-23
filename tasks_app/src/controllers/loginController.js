@@ -20,11 +20,12 @@ const loginController = {
       }
 
       if (bcrypt.compareSync(password, user.password)) {
+        res.cookie('user', JSON.stringify({ id: user.id, name: user.name, type: user.type }));
 
         res.redirect('/tasks');
       }
 
-      res.redirect('/login');
+      res.render('/login');
     }).catch(error => console.log(error));
   }
 }

@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <%- include('./partials/head', { pageName: 'Tasks' }) %>
-<body>
-  <main>
+<body class="tasks-container">
+  
+  <%- include('./partials/tasks/header-tasks', { tasks, user, pageSelected: "tasks" }) %>
 
-    <h4>Tarefas</h4>
+  <main class="tasks container">
+<% if (user) { %> <h2 class="tasks-list-title">Olá, <%=user.name%>! </br> <% if (Boolean(tasks)) { %>Aqui estão suas tarefas:<% } %> <%}%></h2>
+
+
+      <% if (!Boolean(tasks)) { %>
+        <h3 class="no-task">Nenhuma tarefa encontrada para você! <br> Clique no botão "+" abaixo e adicione! </h3>
+      <% } else { %>
+        <form action="/tasks/filtered" method="get">
+          <label for="filter">Filtrar por:</label>
+            <div class="form-group">
+              <select name="filter" id="filter" class="form-control" value="<%= filter %>" >
+                <option value="all">Todas</option>
+                <option value="todo">Abertas</option>
+                <option value="in-progress">Em progresso</option>
+                <option value="done">Concluídas</option>
+              </select>
+    
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+          </form>
+
+        <%- include('./partials/tasks/list-tasks', { tasks }) %>
+      <% } %>
+
+    <a href="/tasks/add" class="button-add">+</a>
   </main>
 </body>
 </html>

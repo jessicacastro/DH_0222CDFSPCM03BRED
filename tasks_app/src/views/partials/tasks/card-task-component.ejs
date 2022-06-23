@@ -1,0 +1,12 @@
+<article class="card">
+  <p class="card-badge <%=task.status%>"><%= task.status === 'todo' ? 'backlog' : task.status === 'in-progress' ? 'doing' : 'done' %></p>
+  <a href="/tasks/delete/<%task.id%>" class="card-delete">x</a>
+  <h5 class="card-title"><%= task.title %></h5>
+  <p class="card-text"><%= task.description %></p>
+
+  <div class="card-footer">
+    <a href="/tasks/update/todo/<%task.id%>" class="card-link">À fazer</a>
+    <a href="/tasks/update/doing/<%task.id%>" class="card-link">Em progresso</a>
+    <a href="/tasks/update/done/<%task.id%>" class="card-link">Concluir</a>
+  </div>
+</article>

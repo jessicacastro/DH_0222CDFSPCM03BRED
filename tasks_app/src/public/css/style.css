@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&display=swap');
+
 :root {
   --color-primary: #00bcd4;
   --color-secondary: #6C63FF;
@@ -8,11 +10,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Inder', sans-serif;
   font-size: 18px;
 }
 
-main {
+main.form-main {
   width: 100%;
   min-height: 100vh;
 
@@ -21,11 +23,11 @@ main {
   align-items: center;
 }
 
-main img {
+main.form-main img {
   width: 80%;
 }
 
-main .form-section {
+main.form-main .form-section {
   width: 50%;
   min-height: 100vh;
   display: flex;
@@ -34,7 +36,7 @@ main .form-section {
   background: linear-gradient(var(--color-secondary), var(--color-primary));
 }
 
-main .image-section {
+main.form-main .image-section {
   width: 50%;
   min-height: 100vh;
   display: flex;
@@ -42,7 +44,7 @@ main .image-section {
   align-items: center;
 }
 
-main form {
+main.form-main form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +56,7 @@ main form {
   border-radius: 70px 10px 0 0;
 }
 
-main form input {
+main.form-main form input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -62,16 +64,267 @@ main form input {
   margin-bottom: 10px;
 }
 
-main form h3 {
+main.form-main form h3 {
   text-align: center;
   margin-bottom: 10px;
   color: #CCC;
 }
 
-main form a {
+main.form-main form a {
   text-align: center;
   width: 100%;
   text-decoration: none;
   color: rgb(55, 128, 153);
   font-size: 0.8rem;
+}
+
+body.tasks-container {
+  background: linear-gradient(252.44deg, #1A1A1A 0%, #0A0A0A 100%);
+  color: #FFF;
+}
+
+main.tasks {
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 120px;
+  padding-bottom: 60px;
+}
+
+main.tasks .button-add {
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  color: #FFF;
+  background-color: #00bcd4;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 1px 0px 5px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+main.tasks .button-add:hover {
+  background-color: #148493;
+
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tasks-container header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  padding: 20px 50px;
+}
+
+.tasks-container header ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  gap: 30px;
+}
+
+.tasks-container header a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #FFF;
+  transition: all .7s;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.tasks-container header a:hover {
+  color: var(--color-primary);
+}
+
+.tasks-list {
+  max-height: 600px;
+  overflow-y: scroll;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.tasks-list::-webkit-scrollbar {
+  width: 10px;
+  color: rgb(36, 160, 36);
+}
+
+.tasks-list-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 160px;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  width: calc(33.3% - 30px);
+  background: linear-gradient(180deg, #00F3FF 1.1%, #00EFFC 24.95%, #00E5F4 45.19%, #00D3E7 64.13%, #00BAD4 82.26%, #009BBC 99.6%, #0098BA 101.3%);
+  padding: 40px 20px 20px 20px;
+  border-radius: 20px 0 20px 0;
+  color: #1A1A1A;
+  position: relative;
+}
+
+.card .card-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  color: #FFF;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+
+.card .card-title {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card .card-text {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.card .card-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.card .card-footer a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #FFF;
+  font-weight: 300;
+  margin-right: 10px;
+  transition: all 0.5s;
+}
+
+.card .card-footer a:hover {
+  color: var(--color-secondary);
+}
+
+.card .card-delete {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: #FFF;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+.todo {
+  background: #ff2f63;
+}
+
+.in-progress {
+  background: rgb(234, 204, 3);
+}
+
+.done {
+  background: rgb(36, 160, 36);
+}
+
+.tasks form {
+  margin-top: 40px;
+  width: 50%;
+}
+
+i {
+  color: #FFF;
+  margin-left: 20px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.tasks form select {
+  width: 40%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #FFF;
+  outline: 0;
+  margin-top: 10px;
+  color: #FFF;
+  padding-left: 10px;
+}
+
+.tasks-container header .selected a {
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.form-add-task {
+  width: 600px;
+  margin: 0 auto;
+  background: #FFF;
+  border-radius: 0px 20px 0px 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-add-task input {
+  height: 60px;
+  padding-left: 8px;
+}
+
+.form-add-task input[type="submit"] {
+  background: rgb(36, 160, 36);
+  color: #FFF;
+  border: 0;
+  cursor: pointer;
+}
+
+.form-add-task img {
+  max-height: 300px;
+}
+
+.form-add-task a {
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+h3.no-task {
+  width: 100%;
+  text-align: center;
+  color: var(--color-tertiary);
+  font-size: 1.5rem;
 }

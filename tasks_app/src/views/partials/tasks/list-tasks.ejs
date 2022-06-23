@@ -1,0 +1,18 @@
+<section class="tasks-list">
+  <% if (tasks && user) { %>
+    <section class="card-wrapper">
+      <% tasks.forEach(task => { %>
+        <%- include('./card-task-component', { task, user }) %>
+      <% }) %>
+
+      <% tasks.forEach(task => { %>
+        <%- include('./card-task-component', { task, user }) %>
+      <% }) %>
+
+      <% tasks.forEach(task => { %>
+        <%- include('./card-task-component', { task, user }) %>
+      <% }) %>
+    </section>
+
+  <% } %>
+</section>

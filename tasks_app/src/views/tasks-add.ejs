@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('./partials/head', { pageName: 'Tasks' }) %>
+<body class="tasks-container">
+  
+  <%- include('./partials/tasks/header-tasks', { user, pageSelected: "tasks" }) %>
+
+  <main class="tasks container">
+    
+    <form class="form-add-task" action="/tasks/add" method="post">
+      <img src="/images/task_add.svg" alt="Homem fazendo tarefa">
+
+      <input type="text" name="title" id="title" placeholder="Título da tarefa">
+      <input type="text" name="description" id="description" placeholder="Descrição da tarefa">
+
+
+      <input type="submit" value="Adicionar tarefa">
+      <a href="/tasks">Voltar para listagem de tarefas</a>
+    </form>
+  </main>
+</body>
+</html>
