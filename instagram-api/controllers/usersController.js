@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const usersController = {
   createUser: async (req, res) => {
     const { name, surname, username, email, password } = req.body;
-    console.log(req.body)
+
     try {
       const user = await User.findOne({ where: { email } });
 
@@ -20,7 +20,6 @@ const usersController = {
         password: bcrypt.hashSync(password, 10)
       }
 
-      console.log(body)
       const newUser = await User.create(body);
 
       return res.status(201).json(newUser);
@@ -30,7 +29,9 @@ const usersController = {
   },
   getUsers: async (req, res) => {
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({
+        attributes: ['id', 'name', 'surname', 'username', 'email']
+      });
 
       return res.status(200).json(users);
     } catch (error) {

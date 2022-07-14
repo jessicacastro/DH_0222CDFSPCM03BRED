@@ -1,11 +1,11 @@
-var express = require("express");
+const express = require("express");
 const cors = require("cors");
-var path = require("path");
-var cookieParser = require("cookie-parser");
+const path = require("path");
+const cookieParser = require("cookie-parser");
 
-var indexRouter = require("./routes/index");
+const indexRouter = require("./routes/index");
 
-var app = express();
+const app = express();
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
