@@ -1,0 +1,11 @@
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #FFF;
+}
