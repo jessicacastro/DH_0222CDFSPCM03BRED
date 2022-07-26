@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* JOGAR PARA O COMPONENTE DEPOIS  */
+table {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+table thead {
+  background-color: #20c9a6;
+  color: #fff;
+}
+
+table thead th {
+  padding: 20px;
+  text-align: center;
+}
+
+table tbody td {
+  padding: 20px 0;
+  text-align: center;
+}
+
