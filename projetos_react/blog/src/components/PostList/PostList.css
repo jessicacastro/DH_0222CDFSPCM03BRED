@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  /* min-height: 100vh; */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: #F1F1F1;
+}
+
+button {
+  cursor: pointer;
+}

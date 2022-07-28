@@ -1,6 +1,7 @@
 import './App.css';
 import { Header } from './components/Header';
 import { ListWrapper } from './components/ListWrapper';
+import { PostList } from './components/PostList';
 import { UserList } from './components/UserList';
 
 function App() {
@@ -49,7 +50,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <PostList />
+      {/* <Header />
       <ListWrapper>
           { usuarios.length > 0 && usuarios.map(usuario => (
                 <UserList 
@@ -72,7 +74,7 @@ function App() {
               )
             ) 
           }
-      </ListWrapper>
+      </ListWrapper> */}
       {/* Sem children */}
       {/* <ListWrapper>
       </ListWrapper> */}
