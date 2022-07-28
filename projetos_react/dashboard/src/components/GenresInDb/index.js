@@ -1,88 +1,38 @@
-export const GenresInDb = () => {
-  return(
-    <div className="col-lg-6 mb-4">						
-							<div className="card shadow mb-4">
-								<div className="card-header py-3">
-									<h5 className="m-0 font-weight-bold text-gray-800">Genres in Data Base</h5>
-								</div>
-								<div className="card-body">
-									<div className="row">
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Acción
-												</div>
-											</div>
-										</div>
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Animación
-												</div>
-											</div>
-										</div>
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Aventura
-												</div>
-											</div>
-										</div>
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Ciencia Ficción
-												</div>
-											</div>
-										</div>
-										{/* Card */}
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Comedia
-												</div>
-											</div>
-										</div>
-										{/* Fim do card */}
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Documental
-												</div>
-											</div>
-										</div>
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Drama
-												</div>
-											</div>
-										</div>
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Fantasia
-												</div>
-											</div>
-										</div>
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Infantiles
-												</div>
-											</div>
-										</div>
-										<div className="col-lg-6 mb-4">
-											<div className="card bg-dark text-white shadow">
-												<div className="card-body">
-													Musical
-												</div>
-											</div>
-										</div>
+import React, { Component } from 'react';
+import api from '../../services/api'
+import { GenreCard } from '../GenreCard';
+export class GenresInDb extends Component {
+	constructor(props) {
+		super();
+		this.state = {
+			genres: []
+		};
+	}
 
+	componentDidMount() {
+		api.get('/api/genres').then(res => {
+			this.setState({ genres: res.data.data });
+		});
+	}
+
+	render() {
+		const { genres } = this.state;
+
+		return(
+			<div className="col-lg-6 mb-4">						
+								<div className="card shadow mb-4">
+									<div className="card-header py-3">
+										<h5 className="m-0 font-weight-bold text-gray-800">Genres in Data Base</h5>
+									</div>
+									<div className="card-body">
+										<div className="row">
+											{ genres.length > 0 && genres.map(genre => {
+												return <GenreCard key={genre.id} name={genre.name}/>
+											})}
+										</div> {/* Fim da row */}
 									</div>
 								</div>
-							</div>
-						</div>
-  )
+			</div>
+		)
+	}
 }
