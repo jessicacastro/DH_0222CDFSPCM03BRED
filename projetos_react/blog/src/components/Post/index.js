@@ -4,19 +4,19 @@ import './Post.css'
 import coracaoImg from '../../assets/imgs/coracao.svg'
 import { Button } from '../Button';
 export const Post = (props) => {
-  // const data = new Date(props.data).toLocaleDateString();
-  console.log(props)
+  const data = new Date(props.data).toLocaleDateString();
+
   return (
     <article>
       <div className="caixa">
-        <span>{props.data}</span>
+        <span>{data}</span>
 
         <img src={coracaoImg} alt="Curtir" />
       </div>
 
       <h3>{props.titulo}</h3>
 
-      <p>{props.descricao}</p>
+      <p class="post-description">{props.descricao}</p>
 
       <Link to={`/posts/${props.id}`}>
         <Button conteudo="Leia mais" />

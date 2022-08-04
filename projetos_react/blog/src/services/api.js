@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-const api = axios.create({
-  baseURL: 'https://api.chucknorris.io/jokes',
+export const api = axios.create({
+  baseURL: 'http://localhost:3001'
 })
-
-export default api
